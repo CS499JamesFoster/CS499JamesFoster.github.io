@@ -1,6 +1,7 @@
-## Welcome to GitHub Pages
+### Code Review
 
-This will be a test to see if it will update as needed.
+This is a quick code review to showcase a few of the programs that will be enhanced for this portfolio as well as featuring some of my work outside of the coursework.
+
 
 
 You can use the [editor on GitHub](https://github.com/CS499JamesFoster/CS499JamesFoster.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
