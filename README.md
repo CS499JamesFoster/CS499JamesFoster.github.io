@@ -1,28 +1,28 @@
-### Code Review
+# Code Review
 
 This is a quick code review to showcase a few of the programs that will be enhanced for this portfolio as well as featuring some of my work outside of the coursework. The code review will cover three artifacts that showcase Software Design and Software Engineering, Algorithms and Data Structure, and Databases. Each artifact will be discussed and then the enhancmenets will be provided below. Thank you for the interest in my projects and my progress.
 
 <div><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/4oCa9eI3lqw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 
-## Artifact One: Software Design and Software Engineering
+# Artifact One: Software Design and Software Engineering
 
-# Artifact One: Enhancements:
+## Artifact One: Enhancements:
 
 
-# Artifact One: Narrative:
+## Artifact One: Narrative:
 
 The artifact chosen for enhancement is the Time Tracker program developed for my current place of employment to help ensure tracking of vacation and sick hours for employees. It was created on 03/09/2019. The reason this artifact is great for my portfolio is that it demonstrates what I have been able to learn and apply throughout my coursework in a real setting and environment. I selected this item because it is challenging and I’m eager to continue polishing my skills as well as completing more projects and showing my worth to the company. Specifically, this item showcases everything I have come to learn through the CS program as well as skills like critical thinking and problem solving for unique situations to our industry. Everything in this project showcases my ability to create, implement, test, and accomplish tasks set forth by a client.
 	The artifact was improved in the following areas: (1) content area created for receiving employee information to add them to the list, (2) buttons were adjusted and allowed to be blocked out if requirements are not met, (3) content area is adjustable and scrollable to fit user screen resolution, and (4)  filler variables are set in place becoming ready for SQL connection. I think that I am progressing toward completing these outcomes. Specifically, CS-499-01, CS-499-02, CS-499-04, and CS-499-05 are all being addressed. I don’t think that CS-499-05 can ever really be completed with the growing threat of many different technologies that can and will disrupt current standards; however, I will strive to be vigilant in completing these tasks.
 	Reflecting on my progress, I’m really impressed that I can accomplish some of this that I once considered impossible or too hard to attempt. It really is an eye-opener to look back and see how far I have come. I constantly learn new ways of doing things as I work on these projects and love that part of programming. Challenges for me are always with UI as I have never worked with UI until the FaxIntake and now Time Tracker. I wanted to challenge myself so that I could become far more effective in my role at work as well as provide much value to the company and owners. Wiring up the UI still gives me a headache at times; however, I am very glad to be working on this project and showcasing my skills.
 
 
-## Artifact Two: Algorithms and Data Structure
+# Artifact Two: Algorithms and Data Structure
 
-# Artifact Two: Enhancements:
+## Artifact Two: Enhancements:
 
 
-# Artifact Two: Narrative:
+## Artifact Two: Narrative:
 
 The artifact that will showcase algorithms and data structure is the FaxIntake program created on January 18, 2019. This program marks the first official program that I created outside of any schoolwork for a productive reason. I developed it for my company in order to process our faxes in a more efficient manner after pointing them to our server. I chose this item because it demonstrates some of the best concepts put into practice that I have learned over the course of this program. Specifically, the area that showcases the use of data structures and algorithms is my search feature. 
 	The search feature has been enhanced and improved. Searching will now allow the user to obtain files that are relevant to the search even if they are not an exact match of the string. For example, the file name “This is a fax” and “This is an awesome fax” would not be returned if the search was “This fax”; however, with the enhancement, both will now be returned because they contain strings relevant to the search. This function showcases the algorithm and data structures due to the manipulation of both to ensure that the proper results are returned relatively quickly. The enhancements will continue in the future as I develop further for partial string matches and continue the relevance features of the search.
@@ -34,12 +34,12 @@ The artifact that will showcase algorithms and data structure is the FaxIntake p
 
 
 
-## Artifact Three: Databases
+# Artifact Three: Databases
 
-# Artifact Three: Enhancements:
+## Artifact Three: Enhancements:
 
 
-# Artifact Three: Narrative:
+## Artifact Three: Narrative:
 
 	The artifact chosen for enhancement is the Time Tracker Database and the Time Tracker program developed for my current place of employment to help ensure tracking of vacation and sick hours for employees. The database was created recently in July 2019. The database was created in order to store the information for the company regarding the employees. This artifact in combination with the Time Tracker program is an example of everything I have learned about using databases such as creating, editing, inserting, reading, and establishing data in them. The database was created and then I was able to connect it to the Time Tracker program in order to use the data stored inside of the database. 
 	The course objectives for this artifact are CS-499-01, CS-499-02, CS-499-03, CS-499-04, and CS-499-05. They have all been met during this implementation. The database will continue to need checks and continual maintenance, but for the current time, there is a great application of our objectives. During the creation of the database, all the tables were created and developed properly; however, sanitizing that data in the program for use or viewing is much more difficult. The only function currently created in the software is the reading employees from the database and displaying them in a selectable list. This will display their names in another field.
