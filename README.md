@@ -60,7 +60,7 @@ public bool CanSubmitEmployee
 
 EmployeesViewModel.cs:
 
-```C#
+```
 namespace TimeTracker.ViewModels
 {
     public class EmployeesViewModel : Conductor<object>
@@ -143,6 +143,176 @@ namespace TimeTracker.ViewModels
 
 ## Artifact Two: Enhancements:
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enhancements that were accomplished are described more in detail in the narrative below. Here are the enhanced code parts. The Search feature has been upgraded.
+
+CompareSearch Method to enhance search feature:
+
+```
+/// <summary>
+/// Compares the strings so that closer matches can be found
+/// </summary>
+/// <param name="file">File information</param>
+/// <param name="searchBox">Text to search</param>
+/// <returns></returns>
+private bool CompareSearch(FileInfo file, TextBox searchBox)
+{
+    //Arrays to store separation of strings
+    string[] fileStringArray = file.Name.ToString().Substring(0, file.Name.ToString().Length - 4).Split(' '); //-4 to remove ".pdf"
+    string[] searchStringArray;
+
+    //value of relevance for the search
+    int relevanceValue = 0;
+    bool match = true;
+
+    //returns true if searchbox is empty for universal search
+    if(searchBox.Text == "")
+    {
+        match = true;
+        return match;
+    }
+
+    //ensures searchbox is separated into array
+    if (searchBox.Text.Contains(" "))
+    {
+        searchStringArray = searchBox.Text.Split(' ');
+    }
+    else
+    {
+        searchStringArray = new string[] { searchBox.Text.ToString() };
+    }
+
+
+    //loops for comparison of strings
+    for(int i = 0; i < searchStringArray.Length; i++)
+    {
+        for (int j = 0; j < fileStringArray.Length; j++)
+        {
+            if(searchStringArray[i].ToLower() == fileStringArray[j].ToLower())
+            {
+                relevanceValue += 1;
+            } 
+        }
+    }
+
+    //if the relevanceVlaue is equal to the length of the search then there are good matches
+    if(relevanceValue == searchStringArray.Length)
+    {
+        match = true;
+    }
+    else
+    {
+        match = false;
+    }
+
+    //clean up the arrays for next call
+    Array.Clear(fileStringArray, 0, fileStringArray.Length);
+    Array.Clear(searchStringArray, 0, searchStringArray.Length);
+    return match;
+
+}
+```
+
+Search Method using the above Method:
+
+```
+/// <summary>
+/// Searches for a file based on user input.
+/// </summary>
+/// <param name="aListBox">Displays search result in current listbox.</param>
+/// <param name="searchBox">Uses tab specific search boxes.</param>
+/// <param name="aLabel">Updates label with current fax count.</param>
+/// <param name="cb">Verifies which checkbox is checked.</param>
+/// <param name="tabNumb">Passes tab number to reference which tab is being checked.</param>
+private void SearchFiles(ListBox aListBox, TextBox searchBox, Label aLabel, CheckBox cb, int tabNumb)
+{
+
+    int countSub = 0;
+    int finalCount = 0;
+
+    DirectoryInfo[] dirInfoArray = new DirectoryInfo[14];
+    //creates new directory info and stores into an array for reference
+    for (int i = 0; i < 14; i++)
+    {
+        dirInfoArray[i] = new DirectoryInfo(FolderPath(i));
+    }
+
+    aListBox.Items.Clear();
+    try
+    {
+        //obtains the directory and lists the files in that directory according to the search box
+        DirectoryInfo dirInfo = new DirectoryInfo(@"\\PRS-SRV\Faxes\");
+        FileInfo[] Files = dirInfo.GetFiles("*.pdf", SearchOption.AllDirectories);
+
+        foreach (FileInfo file in Files)
+        {
+            if (cb.Checked)
+            {
+                //will only search a certain directory
+                if (file.Directory.Name == dirInfoArray[tabNumb].Name)
+                {
+                    if(CompareSearch(file, searchBox))
+                    {
+                        aListBox.Items.Add(file);
+                    }
+                    
+                }
+            }
+            else
+            {
+                //Keeps the backup directory from putting files into the search
+                if (file.Directory.Name != dirInfoArray[13].Name)
+                {
+
+                    if (file.Directory.Name == dirInfoArray[12].Name)
+                    {
+                        if(CompareSearch(file, searchBox))
+                        {
+                            FilterListBox.Items.Add("----In Done----");
+                            FilterListBox.Items.Add(file);
+                            FilterListBox.Items.Add("-------------------------");
+                            countSub += 2;
+                        }
+
+                    }
+                    else
+                    {
+                        if (CompareSearch(file, searchBox))
+                        {
+                            aListBox.Items.Add(file);
+                        }
+                            
+                    }
+
+
+                }
+
+            }
+        }
+
+        foreach (object item in FilterListBox.Items)
+        {
+            aListBox.Items.Add(item);
+        }
+
+        finalCount = (aListBox.Items.Count - countSub);
+        aLabel.Text = "Searched Fax Count:    " + finalCount.ToString();
+        aLabel.Refresh();
+        finalCount = 0;
+        countSub = 0;
+        FilterListBox.Items.Clear();
+    }
+    catch (ArgumentException)
+    {
+        MessageBox.Show("File names cannot contain the following characters: \\ / : * ? \" < > | \nPlease do not use those characters in the name.");
+        searchBox.Clear(); //clears the textbox
+    }
+    catch (Exception e)
+    {
+        MessageBox.Show(e.ToString());
+    }
+}
+```
+
 
 ## Artifact Two: Narrative:
 
@@ -169,40 +339,4 @@ namespace TimeTracker.ViewModels
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The process was more difficult as I expected than the other areas; however, I was surprised at how well the course on Advanced Programming Concepts added to the knowledge of connecting to a database using an API. This was invaluable for me to be able to figure out how to link them together and attempt a connection. The end result was that I was able to insert data into the database from MySQL workbench and then I was able to read that data from inside the program. This was a successful event for me as it was the part that I was most nervous about.
 
 
-
-
-You can use the [editor on GitHub](https://github.com/CS499JamesFoster/CS499JamesFoster.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/CS499JamesFoster/CS499JamesFoster.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+# Self Assessment
