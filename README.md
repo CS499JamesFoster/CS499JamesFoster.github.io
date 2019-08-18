@@ -20,7 +20,7 @@ This is a quick code review to showcase a few of the programs that will be enhan
 <details><summary>EmployeesView.xaml.cs:</summary>
 <p>
 
-```C#
+```
 namespace TimeTracker.Views
 {
     /// <summary>
