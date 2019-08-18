@@ -1,0 +1,574 @@
+﻿<UserControl x:Class="TimeTracker.Views.EmployeesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TimeTracker.Views"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="900" d:DesignWidth="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!--Column 0 Border between the Menu and content area-->
+            <ColumnDefinition Width="auto"/>
+
+            <!--Column 1 Margin for next area-->
+            <ColumnDefinition Width="20" />
+
+            <!--Column 2 ~ Star column as the content area-->
+            <ColumnDefinition Width="*" />
+
+            <!--Column 3 ~ Border column at end-->
+            <ColumnDefinition Width="10" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <!--Row 0 ~ Inital Row-->
+            <RowDefinition Height="120" />
+
+            <!--Row 1 ~ Star Row-->
+            <RowDefinition Height="*" />
+
+            <!--Row 2 ~ Border Row-->
+            <RowDefinition Height="10" />
+
+            <!--Row 3 ~ Star Row-->
+            <RowDefinition Height="*" />
+
+            <!--Row 4 ~ Border Row-->
+            <RowDefinition Height="10" />
+
+        </Grid.RowDefinitions>
+
+        <!--Contains Button and Label-->
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" >
+            <Button x:Name="AddEmployeeBtn"
+                    Margin="0 30"
+                    Padding="10 10 10 10"
+                    Height="auto"
+                    Background="Green"
+                    BorderBrush="Black"
+                    Content="New Employee" FontWeight="Normal"
+                    />
+
+            <TextBlock Text="Current Employees"
+                       FontWeight="Bold"
+                       Margin="2 0 0 0"
+                       Grid.Row="0"/>
+        </StackPanel>
+
+        <!--In the Grid so that height will change dynmically-->
+        <ListBox x:Name="Employees"
+                     Background="WhiteSmoke"
+                     BorderThickness="2"
+                     BorderBrush="Black"
+                     Margin="2 2 2 2"
+                     DisplayMemberPath="EmployeeFullName"
+                     Grid.Row="1"
+                     Grid.RowSpan="3"
+                     SelectedItem="{Binding Path=SelectedEmployee, Mode=OneWayToSource}"
+                     />
+
+        <!--Title for View-->
+        <TextBlock Text="Employee Information"
+                   FontWeight="Bold"
+                   Margin="20"
+                   FontSize="36"
+                   HorizontalAlignment="Center"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   />
+
+            <!--Employee information for display-->
+        <Grid Grid.Column="2" Grid.Row="1" >
+
+            <Grid.ColumnDefinitions>
+                <!--Column 0 ~ Margin Column-->
+                <ColumnDefinition Width="20" />
+
+                <!--Column 1 ~ Star column-->
+                <ColumnDefinition Width="auto" />
+
+                <!--Column 2 ~ Margin column-->
+                <ColumnDefinition Width="5" />
+
+                <!--Column 3 ~ Star column-->
+                <ColumnDefinition Width="180" />
+
+                <!--Column 4 ~ Margin column-->
+                <ColumnDefinition Width="5" />
+
+                <!--Column 5 ~ Star column-->
+                <ColumnDefinition Width="*" />
+
+                <!--Column 6 ~ Margin column-->
+                <ColumnDefinition Width="5" />
+
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <!--Row 0 ~ Margin Row-->
+                <RowDefinition Height="10" />
+
+                <!--Row 1 -->
+                <RowDefinition Height="auto" />
+
+                <!--Row 2 -->
+                <RowDefinition Height="auto" />
+
+                <!--Row 3 ~ Margin Row-->
+                <RowDefinition Height="25" />
+
+                <!--Row 4 -->
+                <RowDefinition Height="auto" />
+
+                <!--Row 5 ~ Margin Row-->
+                <RowDefinition Height="25" />
+
+                <!--Row 6 -->
+                <RowDefinition Height="auto" />
+
+                <!--Row 7 ~ Margin Row-->
+                <RowDefinition Height="25" />
+
+                <!--Row 8 ~ Star Row-->
+                <RowDefinition Height="*" />
+
+                <!--Row 9 ~ Margin Row-->
+                <RowDefinition Height="10" />
+
+            </Grid.RowDefinitions>
+
+            <!--Employee Name label and display-->
+            <TextBlock Text="Employee Name:"
+                   FontWeight="Bold"
+                   Grid.Row="1"
+                   Grid.Column="1" 
+                   HorizontalAlignment="Right"
+                   />
+
+            <TextBlock x:Name="SelectedEmployee_EmployeeFullNameDisplay"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"/>
+
+            <!--Hire Date label and display-->
+            <TextBlock Text="Hire Date:"
+                   FontWeight="Bold"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   HorizontalAlignment="Right"
+                   />
+
+            <TextBlock x:Name="SelectedEmployee_HireDateConversion"
+                       Grid.Row="2"
+                       Grid.Column="3"
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"/>
+
+            <!--Vacation and Sick Grid-->
+            <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <!--Column 0 ~ auto Column-->
+                    <ColumnDefinition Width="5" />
+
+                    <!--Column 1 ~ auto Column-->
+                    <ColumnDefinition Width="auto" />
+
+                    <!--Column 2 ~ auto Column-->
+                    <ColumnDefinition Width="2" />
+
+                    <!--Column 3 ~ auto column-->
+                    <ColumnDefinition Width="30" />
+
+                    <!--Column 4 ~ Star column-->
+                    <ColumnDefinition Width="5" />
+
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <!--Vaction Time rows-->
+                    <!--Row 0 ~ auto Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 1 ~ auto Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 2 ~ Margin Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 3 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 4 ~ Star Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 5 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 6 ~ Star Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 7 ~ Border Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 8 ~ Border Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Sick Time Rows-->
+                    <!--Row 9 ~ auto Row-->
+                    <RowDefinition Height="20" />
+
+                    <!--Row 10 ~ auto Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 11 ~ Margin Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 12 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 13 ~ Star Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 14 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 15 ~ Star Row-->
+                    <RowDefinition Height="5" />
+
+                    <!--Row 16 ~ Border Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 17 ~ Border Row-->
+                    <RowDefinition Height="5" />
+
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="Black"
+                    BorderThickness="2"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="6"
+                    Grid.RowSpan="7"
+                    />
+                <!--Vacation labels and display-->
+                <TextBlock Text="Vacation Time Information"
+                       FontWeight="Bold"
+                       FontSize="22"
+                       Grid.ColumnSpan="5"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       />
+
+                <!--Total hours-->
+                <TextBlock Text="Total Allocated Hours:"
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       HorizontalAlignment="Right"
+                       />
+
+                <TextBlock x:Name="SelectedEmployee_Totals_VacationTimeTotal"
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"
+                       Grid.Column="3"
+                       Grid.Row="3"
+                       />
+
+                <!--Used hours-->
+                <TextBlock Text="Used Hours:"
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.Row="5"
+                       HorizontalAlignment="Right"
+                       />
+
+                <TextBlock 
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"
+                       Grid.Column="3"
+                       Grid.Row="5"
+                       />
+
+                <!--Remaining hours-->
+                <TextBlock Text="Remaining Hours:"
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.Row="7"
+                       HorizontalAlignment="Right"
+                       />
+
+                <TextBlock 
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"
+                       Grid.Column="3"
+                       Grid.Row="7"
+                       />
+
+                <Border BorderBrush="Black"
+                    BorderThickness="2"
+                    Grid.Row="11"
+                    Grid.ColumnSpan="6"
+                    Grid.RowSpan="7"
+                    />
+                <!--Sick labels and display-->
+                <TextBlock Text="Sick Time Information"
+                       FontWeight="Bold"
+                       FontSize="22"
+                       Grid.ColumnSpan="5"
+                       Grid.Row="10"
+                       HorizontalAlignment="Center"
+                       />
+
+                <!--Total hours-->
+                <TextBlock Text="Total Allocated Hours:"
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.Row="12"
+                       HorizontalAlignment="Right"
+                       />
+
+                <TextBlock x:Name="SelectedEmployee_Totals_SickTimeTotal"
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"
+                       Grid.Column="3"
+                       Grid.Row="12"
+                       />
+
+                <!--Used hours-->
+                <TextBlock Text="Used Hours:"
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.Row="14"
+                       HorizontalAlignment="Right"
+                       />
+
+                <TextBlock 
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"
+                       Grid.Column="3"
+                       Grid.Row="14"
+                       />
+
+                <!--Remaining hours-->
+                <TextBlock Text="Remaining Hours:"
+                       FontWeight="Bold"
+                       Grid.Column="1"
+                       Grid.Row="16"
+                       HorizontalAlignment="Right"
+                       />
+
+                <TextBlock 
+                       HorizontalAlignment="Left"
+                       Padding="2 0 0 0"
+                       Grid.Column="3"
+                       Grid.Row="16"
+                       />
+
+            </Grid>
+
+            <Grid Grid.Column="5" Grid.Row="1" Grid.RowSpan="6" >
+
+                <Grid.ColumnDefinitions>
+
+                    <!--Column 0 -->
+                    <ColumnDefinition Width="auto" />
+
+                    <!--Column 1 ~ Margin Coulmn -->
+                    <ColumnDefinition Width="5" />
+
+                    <!--Column 2 -->
+                    <ColumnDefinition Width="180" />
+
+                    <!--Column 3 ~ Margin Coulmn -->
+                    <ColumnDefinition Width="5" />
+
+                    <!--Column 4 -->
+                    <ColumnDefinition Width="auto" />
+
+                    <!--Column 4 ~ Margin Coulmn -->
+                    <ColumnDefinition Width="5" />
+
+                    <!--Column 6 ~ Star-->
+                    <ColumnDefinition Width="180" />
+
+
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <!--Row 0 ~ Border Row-->
+                    <RowDefinition Height="10" />
+
+                    <!--Row 1 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 2 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 3 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 4 ~ Star Row-->
+                    <RowDefinition Height="25" />
+
+                    <!--Row 5 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 6 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 7 ~ Star Row-->
+                    <RowDefinition Height="25" />
+
+                    <!--Row 8 ~ Star Row-->
+                    <RowDefinition Height="auto" />
+
+                    <!--Row 9 ~ Margin Row-->
+                    <RowDefinition Height="10" />
+
+                </Grid.RowDefinitions>
+
+                <!--First Name-->
+                <TextBlock Text="First Name:"
+                        FontWeight="Bold"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    />
+
+                <!--Middle Initial-->
+                <TextBlock Text="Middle Initial:"
+                        FontWeight="Bold"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    />
+
+                <!--Last Initial-->
+                <TextBlock Text="Last Name:"
+                        FontWeight="Bold"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    />
+
+                <!--Hire Date-->
+                <TextBlock Text="Hire Date:"
+                        FontWeight="Bold"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    />
+
+                <!--Employee Pay Type-->
+                <TextBlock Text="Employee Pay Type:"
+                        FontWeight="Bold"
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    Text="This is a test"
+                    />
+
+                <!--Total Vacation Hours-->
+                <TextBlock Text="Total Vaction Hours:"
+                        FontWeight="Bold"
+                        Grid.Row="5"
+                        Grid.Column="4"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="5"
+                        Grid.Column="6"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    Text="This is a test"
+                    />
+
+                <!--Total Sick Hours-->
+                <TextBlock Text="Total Sick Hours:"
+                        FontWeight="Bold"
+                        Grid.Row="6"
+                        Grid.Column="4"
+                        HorizontalAlignment="Right"
+                   />
+
+                <TextBlock 
+                        Grid.Row="6"
+                        Grid.Column="6"
+                        HorizontalAlignment="Left"
+                        Padding="2 0 0 0"
+                    Text="This is a test"
+                    />
+
+                <Button x:Name="EditEmployeeBtn"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="8"
+                    Padding="10 10 10 10"
+                    Margin="0 10 50 10"
+                    Height="auto"
+                    Background="Green"
+                    BorderBrush="Black"
+                    Content="Edit Employee" FontWeight="Normal"
+                    />
+
+            </Grid>
+
+        </Grid>
+
+        <!--Providing user ability to split the content area-->
+        <GridSplitter
+            Grid.Column="2"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Height="5"
+            HorizontalAlignment="Stretch"
+            Background="Black"
+            />
+        <ContentControl
+            x:Name="ActiveItem"
+            Grid.Column="2"
+            Grid.Row="3"
+            />
+
+    </Grid>
+</UserControl>
