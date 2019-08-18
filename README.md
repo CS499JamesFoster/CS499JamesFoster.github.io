@@ -17,12 +17,8 @@ This is a quick code review to showcase a few of the programs that will be enhan
 
 <img src="Enhancement One 3.PNG">
 
-```
-testing
-```
 
-<details><summary>EmployeesView.xaml.cs:</summary>
-<p>
+EmployeesView.xaml.cs:
 
 ```
 namespace TimeTracker.Views
@@ -40,13 +36,9 @@ namespace TimeTracker.Views
 }
 ```
 
-</p>
-</details>
+AddEmployeeViewModel.cs (Code for Graying Out Button):
 
-<details><summary>AddEmployeeViewModel.cs (Code for Graying Out Button):</summary>
-<p>
-
-```C#
+```
 public bool CanSubmitEmployee
 {
     get
@@ -66,11 +58,7 @@ public bool CanSubmitEmployee
 
 ```
 
-</p>
-</details>
-
-<details><summary>EmployeesViewModel.cs:</summary>
-<p>
+EmployeesViewModel.cs:
 
 ```C#
 namespace TimeTracker.ViewModels
@@ -141,10 +129,6 @@ namespace TimeTracker.ViewModels
     }
 }
 ```
-
-</p>
-</details>
-
 
 ## Artifact One: Narrative:
 
