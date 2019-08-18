@@ -1,6 +1,6 @@
 # Code Review
 
-This is a quick code review to showcase a few of the programs that will be enhanced for this portfolio as well as featuring some of my work outside of the coursework. The code review will cover three artifacts that showcase Software Design and Software Engineering, Algorithms and Data Structure, and Databases. Each artifact will be discussed and then the enhancmenets will be provided below. Thank you for the interest in my projects and my progress.
+This is a quick code review to showcase a few of the programs that will be enhanced for this portfolio as well as featuring some of my work outside of the coursework. The code review will cover three artifacts that showcase Software Design and Software Engineering, Algorithms and Data Structure, and Databases. Each artifact will be discussed and then the enhancements will be provided below. Thank you for the interest in my projects and my progress.
 
 <div><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/4oCa9eI3lqw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
@@ -18,7 +18,7 @@ This is a quick code review to showcase a few of the programs that will be enhan
 <img src="Enhancement One 3.PNG">
 
 
-EmployeesView.xaml.cs:
+### EmployeesView.xaml.cs:
 
 ```
 namespace TimeTracker.Views
@@ -36,7 +36,7 @@ namespace TimeTracker.Views
 }
 ```
 
-AddEmployeeViewModel.cs (Code for Graying Out Button):
+### AddEmployeeViewModel.cs (Code for Graying Out Button):
 
 ```
 public bool CanSubmitEmployee
@@ -58,7 +58,7 @@ public bool CanSubmitEmployee
 
 ```
 
-EmployeesViewModel.cs:
+### EmployeesViewModel.cs:
 
 ```
 namespace TimeTracker.ViewModels
@@ -145,7 +145,7 @@ namespace TimeTracker.ViewModels
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enhancements that were accomplished are described more in detail in the narrative below. Here are the enhanced code parts. The Search feature has been upgraded.
 
-CompareSearch Method to enhance search feature:
+### CompareSearch Method to enhance search feature:
 
 ```
 /// <summary>
@@ -212,7 +212,7 @@ private bool CompareSearch(FileInfo file, TextBox searchBox)
 }
 ```
 
-Search Method using the above Method:
+### Search Method using the above Method:
 
 ```
 /// <summary>
@@ -333,7 +333,7 @@ private void SearchFiles(ListBox aListBox, TextBox searchBox, Label aLabel, Chec
 
 <img src="MySQL Insertion of Data.PNG">
 
-Data Insertion:
+### Data Insertion:
 
 ```
 USE time_tracker;
@@ -356,7 +356,7 @@ Set first_name = 'Frank', middle_initial = 'M', last_name = 'Joker', hire_date =
 Where employee_id = 6;
 ```
 
-Updated section of EmployeeViewModle.cs:
+### Updated section of EmployeeViewModle.cs:
 
 ```
 private MySqlConnection conn;
@@ -435,3 +435,13 @@ private void RetrieveEmployees()
 
 
 # Self Assessment
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The course work over the entire program has been a great to enhance my skills and provide me a simulated and controlled environment. The skills gained over the course of the program will continue to provide an edge moving forward in my career. I have had all my skills sharpened and even new one developed. Creating this ePortfolio has also enhanced my ability to understand where I am currently in understanding, presentation, and functionality with regard to my programming skills. In short, I have learned to work with a team, communicate ideas and solutions, develop algorithms and data structures, develop software, manage databases, and keep security in mind.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each and every day there are opportunities to promote collaboration. In fact, I had to utilize the techniques taught with reference to Agile development in order to restore a computer system that had crashed for my company. This was the most helpful and beneficial regarding team environment because I was able to take control and rebuild everything in a few short weeks. We utilized Agile to ensure that everything that needed to be done was done as this was a huge project and time mattered. In the same regard, this was also a place where I had to utilize my new skills to ensure that the business owners understood what needed to be done with the database since I have an in-depth knowledge of how the technology worked. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Furthermore, after the completion of the rebuilding of the database, we have looked for some upgrades in terms of software which I will also help build using my knowledge from the program. While waiting for the deployment of this system, I have created two programs that assist and will assist our management to ensure that we are more efficient. The first was the FaxIntake program that has been referenced in this ePortfolio and it also was my first project outside of the program. I was able to utilize the data structures and algorithms and software engineering.  I then moved on to creating the TimeTracker program which utilizes a database along with data structures, algorithms, and software engineering. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The two programs, FaxIntake and TimeTracker, have been the core of my knowledge as a showcase from all of the hard work through the program. These programs have embodied the entire spectrum of the skills gained as well as have become products of that knowledge in a tangible form that is currently implemented into a productive environment. The programs have helped management and our efficiency overall. Specifically, the software engineering has allowed a usable program to become a necessity for office function. The data structures and algorithms are also necessary for productive use of the program (FaxIntake) and it has made the lives of our employees much easier. The feature has been upgraded and is more robust than before allowing for an easier search for documents. We have already worked with many parts of the database; however, connecting a program that I have created with a database has been a great experience for me.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With the coming of the new software, I will utilize SQL in order to build custom queries for reporting as well as building database tables to store information. This skill would have been much harder to obtain without the training given in the Computer Science program. Overall, I can not find any part of the program that I would change as the skills gained have been so much more valuable to me than I can express. These programs are only the beginning of what I will begin to create as I more forward in this career. I will use these skills to promote my abilities as well as provide these programs as references for what I can accomplish.
