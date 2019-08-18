@@ -9,6 +9,138 @@ This is a quick code review to showcase a few of the programs that will be enhan
 
 ## Artifact One: Enhancements:
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enhancements that were accomplished are described more in detail in the narrative below. Here are the images of the enhancements and code for them. The content area has been added and some checks before using buttons have been added.
+
+<img src="Enhancement One 1.PNG">
+
+<img src="Enhancement One 2.PNG">
+
+<img src="Enhancement One 3.PNG">
+
+<details><summary>EmployeesView.xaml.cs:</summary>
+<p>
+
+```C#
+namespace TimeTracker.Views
+{
+    /// <summary>
+    /// Interaction logic for EmployeesView.xaml
+    /// </summary>
+    public partial class EmployeesView : UserControl
+    {
+        public EmployeesView()
+        {
+            InitializeComponent();
+        }
+    }
+}
+```
+
+</p>
+</details>
+
+<details><summary>AddEmployeeViewModel.cs (Code for Graying Out Button):</summary>
+<p>
+
+```C#
+public bool CanSubmitEmployee
+{
+    get
+    {
+        if (FirstName.Length > 0 && LastName.Length > 0 && Month > 0 && Day > 0 && Year > 1900)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+}
+
+
+```
+
+</p>
+</details>
+
+<details><summary>EmployeesViewModel.cs:</summary>
+<p>
+
+```C#
+namespace TimeTracker.ViewModels
+{
+    public class EmployeesViewModel : Conductor<object>
+    {
+
+        private BindableCollection<EmployeeModel> _employees = new BindableCollection<EmployeeModel>();
+        private EmployeeModel _selectedEmployee;        
+
+        public EmployeesViewModel()
+        {
+            ActivateItem(new AddEmployeeViewModel());
+
+
+            DateTime hire = new DateTime(2011, 09, 12);
+            DateTime hire2 = new DateTime(2018, 09, 12);
+            DateTime hire3 = new DateTime(2015, 02, 27);
+            DateTime hire4 = new DateTime(2016, 10, 31);
+
+            Employees.Add(new EmployeeModel { FirstName = "James", MiddleInitial = "J", LastName = "Foster", HireDate = hire});
+            Employees.Add(new EmployeeModel { FirstName = "Jane", MiddleInitial = "L", LastName = "Doe", HireDate = hire2 });
+            Employees.Add(new EmployeeModel { FirstName = "John", MiddleInitial = " ", LastName = "Doe", HireDate = hire3 });
+            Employees.Add(new EmployeeModel { FirstName = "Jack", MiddleInitial = "O", LastName = "Walker", HireDate = hire4 });
+            Employees.Add(new EmployeeModel { FirstName = "Jim", MiddleInitial = "K", LastName = "Doe", HireDate = hire2 });
+            Employees.Add(new EmployeeModel { FirstName = "Frank", MiddleInitial = "M", LastName = "Joker", HireDate = hire });
+
+            Employees[0].VacationDays.Add(new VacationDayModel { UsedVacationTime = 8, DateVacationUsed = hire });
+            Employees[0].Totals.VacationTimeTotal = 70;
+            Employees[0].Totals.SickTimeTotal = 40;
+        }
+
+        public BindableCollection<EmployeeModel> Employees
+        {
+            get { return _employees; }
+            set { _employees = value; }
+        }
+
+        public EmployeeModel SelectedEmployee
+        {
+            get { return _selectedEmployee; }
+            set
+            {
+                _selectedEmployee = value;
+                NotifyOfPropertyChange(() => SelectedEmployee);
+                NotifyOfPropertyChange(() => CanEditEmployeeBtn);
+            }
+        }
+
+        public bool CanEditEmployeeBtn
+        {
+            get
+            {
+                return SelectedEmployee != null;
+            }
+            
+        }
+
+        public void EditEmployeeBtn()
+        {
+
+        }
+
+        public void AddEmployeeBtn()
+        {
+
+        }
+    }
+}
+```
+
+</p>
+</details>
+
 
 ## Artifact One: Narrative:
 
