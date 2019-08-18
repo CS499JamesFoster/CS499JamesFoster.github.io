@@ -329,6 +329,101 @@ private void SearchFiles(ListBox aListBox, TextBox searchBox, Label aLabel, Chec
 
 ## Artifact Three: Enhancements:
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enhancements that were accomplished are described more in detail in the narrative below. Here are the enhanced code parts and image. Database was created, data insert into the database, and then connection created to pull data from the database to the program.
+
+<img src="MySQL Insertion of Data.PNG">
+
+Data Insertion:
+
+```
+USE time_tracker;
+SELECT * FROM employee;
+
+INSERT INTO employee (first_name, middle_initial, last_name, hire_date)
+VALUES('James', 'J', 'Foster', '2011-09-12');
+
+INSERT INTO employee (first_name, middle_initial, last_name, hire_date)
+VALUES('Jane', 'L', 'Doe', '2015-05-11');
+
+INSERT INTO employee (first_name, middle_initial, last_name, hire_date)
+VALUES('Jack', 'O', 'Walker', '2018-01-12');
+
+INSERT INTO employee (first_name, middle_initial, last_name, hire_date)
+VALUES('Frank', 'M', 'Joker', '2011-07-12');
+
+UPDATE employee
+Set first_name = 'Frank', middle_initial = 'M', last_name = 'Joker', hire_date = '2014-05-26'
+Where employee_id = 6;
+```
+
+Updated section of EmployeeViewModle.cs:
+
+```
+private MySqlConnection conn;
+private string conString;
+
+private BindableCollection<EmployeeModel> _employees = new BindableCollection<EmployeeModel>();
+private EmployeeModel _selectedEmployee;        
+
+
+public EmployeesViewModel()
+{
+    ActivateItem(new AddEmployeeViewModel());
+
+
+    OpenMySql();
+    RetrieveEmployees();
+    CloseMySql(conn);
+
+
+    //Employees[0].VacationDays.Add(new VacationDayModel { UsedVacationTime = 8, DateVacationUsed = hire });
+    //Employees[0].Totals.VacationTimeTotal = 70;
+    //Employees[0].Totals.SickTimeTotal = 40;
+}
+
+private void OpenMySql()
+{
+    conString = "server=127.0.0.1;user id=root;pwd=Samuel#11;persistsecurityinfo=True;database=time_tracker";
+
+    conn = new MySqlConnection(conString);
+    try
+    {
+        conn.Open();
+
+    }
+    catch (Exception e)
+    {
+        MessageBox.Show(e.ToString());
+    }
+
+}
+
+private void CloseMySql(MySqlConnection conn)
+{
+    conn.Close();
+}
+
+private void RetrieveEmployees()
+{
+    string query = "SELECT * FROM employee";
+
+    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+    MySqlDataReader reader = cmd.ExecuteReader();
+
+    while (reader.Read())
+    {
+        string Ids = reader["employee_id"].ToString();
+        string FirstNames = reader["first_name"].ToString();
+        string MiddleInitials = reader["middle_initial"].ToString();
+        string LastNames = reader["last_name"].ToString();
+        string HireDates = reader["hire_date"].ToString();
+        EmployeeModel test = new EmployeeModel { Id = Ids, FirstName = FirstNames, MiddleInitial = MiddleInitials, LastName = LastNames, HireDate = HireDates };
+        Employees.Add(test);
+    }
+
+}
+```
 
 ## Artifact Three: Narrative:
 
